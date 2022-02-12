@@ -20,5 +20,8 @@ Since each unique data source is structured differently, I normalized the popula
 | 1950       | 1         | 3,299,863        |
 | ...        | ...       | ...              |
 | 1950       | 85        | 589,612          |
+| 1951       | 0         | 3,315,027        |
+| ...        | ...       | ...              |
+| 2020       | 85        |  6,739,054       |
 
 Due to some data sources lumping all ages greater than 84 into one bucket - 85+ - the age 85 in my schema represents 85+. 
