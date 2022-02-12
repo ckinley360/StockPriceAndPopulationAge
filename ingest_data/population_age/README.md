@@ -9,3 +9,16 @@ All population age data is sourced from the [United States Census Bureau website
 - **2011 - 2020:** [CSV files](https://www.census.gov/data/tables/time-series/demo/popest/2010s-national-detail.html). I used the July estimate for each year.
 
 To verify that I pulled the data correctly, I used the [Federal Reserve Bank of St. Louis's population data](https://fred.stlouisfed.org/graph/?id=POP,) as a cross-check. There are some small differences due to the St. Louis Fed's rounding, and potentially pulling data from a United States Census Bureau source that was calculated in a slightly different way (you can get population estimates for the same date range in multiple places on the Census Bureau's website).
+
+# Data Normalization
+
+Since each unique data source is structured differently, I normalized the population data to conform to this schema:
+
+| Year (int) | Age (int) | Population (int) |
+| ---------- | --------- | ---------------- |
+| 1950       | 0         | 3,162,567        |
+| 1950       | 1         | 3,299,863        |
+| ...        | ...       | ...              |
+| 1950       | 85        | 589,612          |
+
+Due to some data sources lumping all ages greater than 84 into one bucket - 85+ - the age 85 in my schema represents 85+. 
