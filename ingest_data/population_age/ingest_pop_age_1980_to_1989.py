@@ -10,27 +10,25 @@ textFile1988to1989 = 'data_files\E8889PQI.TXT'
 textFile1989to1990 = 'data_files\E8990PQI.TXT'
 
 def read_text_file(filePath):
-    file = open(filePath, "r")
+    with open(filePath, 'r') as file:
+        while True:
+            line = file.readline()
 
-    while True:
-        line = file.readline()
+            # If end of file reached, then stop reading lines.
+            if line == '\x1a\n':
+                break
 
-        # If end of file reached, then stop reading lines.
-        if line == '\x1a\n':
-            break
+            month = int(line[2:4].strip())
+            year = int('19' + line[4:6].strip())
+            age = int(line[6:9].strip())
+            population = int(line[10:20].strip())
 
-        month = int(line[3:5].strip())
-        year = int(line[5:7].strip())
-        age = int(line[7:10].strip())
-        population = int(line[11:21].strip())
-        print(month) # Not slicing correctly
-
-        if month == 7:
-            print('Month: ' + month)
-            print('Year: ' + year)
-            print('Age: ' + age)
-            print('Population: ' + population)
-            print('\n')
+            if month == 7:
+                print('Month: ' + str(month))
+                print('Year: ' + str(year))
+                print('Age: ' + str(age))
+                print('Population: ' + str(population))
+                print('\n')
 
 def main():
     read_text_file(textFile1980to1981)
