@@ -1,6 +1,6 @@
 import pandas as pd
 
-# This global dataframe will store the cumulative data as it is read in from the different Excel files and tabs
+# This global dataframe will store the cumulative data as it is read in from the different Excel files and tabs.
 mainDf = pd.DataFrame(columns=['Year', 'Age', 'Population'])
 
 excelFile1950s = 'data_files\pe-11-1950s.xls'
