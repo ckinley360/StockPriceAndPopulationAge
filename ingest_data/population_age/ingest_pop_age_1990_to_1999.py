@@ -8,15 +8,38 @@ parameters = {
 }
 
 # Issue a GET request to the API to get the data we are interested in - year, age, and population.
-# The response is a two-dimensional list containing the columns YEAR, AGE, and TOT_POP.
+# Return a string representation of the response.
 def getData(url, parameters):
     response = requests.get(url=url, params=parameters)
     return response.text
 
 def parseData(data):
-    df = pd.DataFrame(data=data, index=None, columns=['YEAR', 'AGE', 'TOT_POP'])
-    print(df)
+    # Remove double quotes, left square bracket, and right square bracket.
+    data = data.replace('"', '').replace('[', '').replace(']', '')
 
+    # Split the string on comma + newline to create a list of strings.
+    data = data.split(',\n')
+
+    # Split each string in the list on comma to create a two-dimensional list.
+    index = 0
+    for string in data:
+        data[index] = string.split(',')
+        index += 1
+
+    # Convert the two-dimensional list into a dataframe.
+    df = pd.DataFrame(data=data, columns=['Year', 'Age', 'Population'])
+
+    # Filter out the old header row, total population rows (age 999), and populations for the year 2000.
+    df = df[(df.Year != 'YEAR') & (df.Age != '999') & (df.Year != '2000')]
+
+    # Convert each dataframe column to integer type.
+    df = df.astype({'Year': int, 'Age': int, 'Population': int})
+
+    # Sum the populations of ages 85 and greater to put it into one bucket - 85.
+    
+
+    print(df)
+    
 def write_to_csv(list, filePath):
     print('hello')
 
