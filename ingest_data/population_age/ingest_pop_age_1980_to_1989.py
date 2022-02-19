@@ -65,13 +65,13 @@ def read_text_file(filePath):
                     mainList.append([year, age, population])
 
 def write_to_csv(list, filePath):
-    with open(filePath, 'w') as file:
+    with open(file=filePath, mode='w', newline='') as file:
         rowWriter = csv.writer(file)
         header = ['Year', 'Age', 'Population']
         rowWriter.writerow(header)
         
-        for subList in list:
-            rowWriter.writerow(subList) # Why extra newlines?
+        for row in list:
+            rowWriter.writerow(row)
 
 def main():
     read_text_files(textFile1980to1981, textFile1981to1982, textFile1982to1983, textFile1983to1984, textFile1984to1985,
