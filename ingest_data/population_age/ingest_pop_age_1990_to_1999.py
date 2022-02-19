@@ -36,7 +36,9 @@ def parseData(data):
     df = df.astype({'Year': int, 'Age': int, 'Population': int})
 
     # Sum the populations of ages 85 and greater to put it into one bucket - 85.
-    
+    # https://stackoverflow.com/questions/55727891/pandas-dataframe-how-to-aggregate-a-subset-of-rows-based-on-value-of-a-column
+    # https://pandas.pydata.org/pandas-docs/stable/user_guide/window.html
+    # https://towardsdatascience.com/sql-window-functions-in-python-pandas-data-science-dc7c7a63cbb4
 
     print(df)
     
