@@ -12,7 +12,7 @@ def read_excel_files(*files):
     for file in files:
         read_excel_file(file)
 
-# Read in the Excel file, and isolate the data we are interested in - total pouplation by single year of age.
+# Read in the Excel file, and isolate the data we are interested in - year, age, and population.
 def read_excel_file(filePath):
     sheets_dict = pd.read_excel(io=filePath, sheet_name=None, header=5, names=['Age','Population'], usecols=[0,1])
 
