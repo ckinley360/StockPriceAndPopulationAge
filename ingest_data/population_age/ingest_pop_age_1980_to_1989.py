@@ -1,3 +1,5 @@
+import csv
+
 # This global list will store the cumulative data as it is read in from the text files.
 mainList = []
 
@@ -12,6 +14,12 @@ textFile1987to1988 = 'data_files\E8788PQI.TXT'
 textFile1988to1989 = 'data_files\E8889PQI.TXT'
 textFile1989to1990 = 'data_files\E8990PQI.TXT'
 
+# Read in the text files.
+def read_text_files(*files):
+    for file in files:
+        read_text_file(file)
+
+# Read in the text file, and isolate the data we are interested in - year, age, and population.
 def read_text_file(filePath):
     # We are going to append the population of each age group for each year (represented as a list) to the main list.
     global mainList
@@ -56,10 +64,19 @@ def read_text_file(filePath):
                 else:
                     mainList.append([year, age, population])
 
+def write_to_csv(list, filePath):
+    with open(filePath, 'w') as file:
+        rowWriter = csv.writer(file)
+        header = ['Year', 'Age', 'Population']
+        rowWriter.writerow(header)
+        
+        for subList in list:
+            rowWriter.writerow(subList) # Why extra newlines?
+
 def main():
-    read_text_file(textFile1980to1981)
-    for list in mainList:
-        print(list)
+    read_text_files(textFile1980to1981, textFile1981to1982, textFile1982to1983, textFile1983to1984, textFile1984to1985,
+                    textFile1985to1986, textFile1986to1987, textFile1987to1988, textFile1988to1989, textFile1989to1990)
+    write_to_csv(mainList, 'normalized_data_files/1980_to_1989_normalized.csv')
 
 if __name__ == '__main__':
     main()
