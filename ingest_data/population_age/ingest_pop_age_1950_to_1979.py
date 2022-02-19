@@ -31,12 +31,12 @@ def read_excel_file(filePath):
         mainDf = pd.concat([mainDf, sheet_df])
 
 # Write the data in the dataframe to a csv file with name fileName.
-def write_to_csv(df, fileName):
-    df.to_csv(path_or_buf='normalized_data_files/'+fileName+'.csv', index=False)
+def write_to_csv(df, filePath):
+    df.to_csv(path_or_buf=filePath, index=False)
 
 def main():
     read_excel_files(excelFile1950s, excelFile1960s, excelFile1970s)
-    write_to_csv(mainDf, '1950_to_1979_normalized')
+    write_to_csv(mainDf, 'normalized_data_files/1950_to_1979_normalized.csv')
 
 if __name__ == '__main__':
     main()
