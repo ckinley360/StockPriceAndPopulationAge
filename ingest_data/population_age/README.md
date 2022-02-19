@@ -1,3 +1,7 @@
+# Disclaimer
+
+This product uses the Census Bureau Data API but is not endorsed or certified by the Census Bureau.
+
 # Data Sources
 
 All population age data is sourced from the [United States Census Bureau website](https://www.census.gov/data.html). To get the entire population of the United States, I used the Estimated Resident Population plus Armed Forces Overseas. To be able to calculate the median age for each year, I used the population estimates that are broken down by Single Year of Age. Data for different years is structured differently, and so I wrote custom Python scripts to ingest each unique data source.
