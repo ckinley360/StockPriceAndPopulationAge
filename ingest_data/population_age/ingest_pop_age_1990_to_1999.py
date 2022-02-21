@@ -35,19 +35,27 @@ def parseData(data):
     # Convert each dataframe column to integer type.
     df = df.astype({'Year': int, 'Age': int, 'Population': int})
 
-    # Sum the populations of ages 85 and greater to put it into one bucket - 85.
-    # https://stackoverflow.com/questions/55727891/pandas-dataframe-how-to-aggregate-a-subset-of-rows-based-on-value-of-a-column
-    # https://pandas.pydata.org/pandas-docs/stable/user_guide/window.html
-    # https://towardsdatascience.com/sql-window-functions-in-python-pandas-data-science-dc7c7a63cbb4
+    # Sum the populations of ages 85 and greater, for each year, to put that age range into one bucket - 85. Put the result in a second dataframe.
+    dfEightyFiveBucket = df[df.Age >= 85]
+    dfEightyFiveBucket = dfEightyFiveBucket.groupby(['Year']).sum()
+    dfEightyFiveBucket['Age'] = 85
+    dfEightyFiveBucket = dfEightyFiveBucket.reset_index()
 
-    print(df)
+    # Filter out ages 85 and greater from the first dataframe.
+    df = df[df.Age < 85]
+
+    # Concatenate the second dataframe with the first dataframe.
+    df = pd.concat([df, dfEightyFiveBucket])
+
+    return df
     
-def write_to_csv(list, filePath):
-    print('hello')
+def write_to_csv(df, filePath):
+    df.to_csv(path_or_buf=filePath, index=False)
 
 def main():
     data = getData(url, parameters)
-    parseData(data)
+    parsedData = parseData(data)
+    write_to_csv(parsedData, 'normalized_data_files/1990_to_1999_normalized.csv')
 
 if __name__ == '__main__':
     main()
