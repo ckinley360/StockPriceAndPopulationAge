@@ -1,5 +1,5 @@
-import requests
 import pandas as pd
+import requests
 
 url = 'https://api.census.gov/data/1990/pep/int_natresafo'
 parameters = {
