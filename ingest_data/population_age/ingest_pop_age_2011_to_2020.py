@@ -14,8 +14,23 @@ csvFile2018 = 'data_files\\nc-est2019-alldata-p-file18.csv'
 csvFile2019 = 'data_files\\nc-est2019-alldata-p-file20.csv'
 csvFile2020 = 'data_files\\nc-est2019-alldata-p-file22.csv'
 
-# Read in the data from each CSV file, transform the data to fit our schema, and concatenate the results.
 def read_and_transform_data(*files):
+
+    """
+    Reads in the data from each CSV file, transforms it to fit the target schema, and concatenates the results.
+
+    Parameters:
+    -----------
+    * *files : string
+        Filepaths to CSV files.
+
+    Returns:
+    -----------
+    * df: pandas dataframe
+        The transformed and concatenated data.
+
+    """
+
     for file in files:
         data = read_csv_file(file)
         transformedData = transform_data(data)
