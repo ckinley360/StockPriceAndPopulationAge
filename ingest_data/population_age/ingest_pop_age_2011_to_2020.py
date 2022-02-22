@@ -1,5 +1,8 @@
 import pandas as pd
 
+# This global dataframe will store the cumulative data as it is read in from the different CSV files.
+mainDf = pd.DataFrame(columns=['Year', 'Age', 'Population'])
+
 csvFile2011 = 'data_files\\nc-est2019-alldata-p-file04.csv'
 csvFile2012 = 'data_files\\nc-est2019-alldata-p-file06.csv'
 csvFile2013 = 'data_files\\nc-est2019-alldata-p-file08.csv'
@@ -11,8 +14,18 @@ csvFile2018 = 'data_files\\nc-est2019-alldata-p-file18.csv'
 csvFile2019 = 'data_files\\nc-est2019-alldata-p-file20.csv'
 csvFile2020 = 'data_files\\nc-est2019-alldata-p-file22.csv'
 
+# Read in the data from each CSV file, transform the data to fit our schema, and concatenate the results.
+def read_and_transform_data(*files):
+    for file in files:
+        data = read_csv_file(file)
+        transformedData = transform_data(data)
+        global mainDf
+        mainDf = pd.concat([mainDf, transformedData])
+    
+    return mainDf
+
 # Read in the CSV file.
-def readCsvFile(filePath):
+def read_csv_file(filePath):
     df = pd.read_csv(filepath_or_buffer=filePath, usecols=['MONTH', 'YEAR', 'AGE', 'TOT_POP'])
 
     return df
@@ -50,9 +63,9 @@ def write_to_csv(df, filePath):
     print(df)
 
 def main():
-    df = readCsvFile(csvFile2011)
-    transformedDf = transform_data(df)
-    write_to_csv(transformedDf, 'normalized_data_files/2011_to_2020_normalized.csv')
+    data = read_and_transform_data(csvFile2011, csvFile2012, csvFile2013, csvFile2014,
+                                   csvFile2015, csvFile2016, csvFile2017, csvFile2018, csvFile2019, csvFile2020)
+    write_to_csv(data, 'normalized_data_files/2011_to_2020_normalized.csv')
 
 if __name__ == '__main__':
     main()
