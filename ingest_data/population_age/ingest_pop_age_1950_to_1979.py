@@ -7,13 +7,13 @@ excelFile1950s = 'data_files\pe-11-1950s.xls'
 excelFile1960s = 'data_files\pe-11-1960s.xls'
 excelFile1970s = 'data_files\pe-11-1970s.xls'
 
-def read_and_transform_data(*files):
+def read_and_transform_data(*filePaths):
     """
     Read in the data from each Excel file, transform it to fit the target schema, and concatenate the results into one dataframe.
     
     Parameters:
     -----------
-    * *files : string
+    * *filePaths : string
         Filepaths to Excel files.
     
     Returns:
@@ -26,8 +26,8 @@ def read_and_transform_data(*files):
     # Stores the cumulative data as it is read in from the different Excel files and transformed.
     df = pd.DataFrame(columns=['Year', 'Age', 'Population'])
 
-    for file in files:
-        data = read_excel_file(file)
+    for filePath in filePaths:
+        data = read_excel_file(filePath)
         transformedData = transform_data(data)
         df = pd.concat([df, transformedData])
 
