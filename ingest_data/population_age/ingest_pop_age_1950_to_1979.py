@@ -18,7 +18,7 @@ def read_and_transform_data(*files):
     
     Returns:
     -----------
-    * df: pandas.DataFrame
+    * df : pandas.DataFrame
         The transformed and concatenated data.
     
     """
