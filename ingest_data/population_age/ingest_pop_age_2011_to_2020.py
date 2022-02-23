@@ -1,8 +1,8 @@
 import pandas as pd
 
-# This global dataframe will store the cumulative data as it is read in from the different CSV files.
-mainDf = pd.DataFrame(columns=['Year', 'Age', 'Population'])
-
+# Filepaths to the CSV files containing population by single year of age for the years 2011-2020.
+# Sourced from "Monthly Postcensal Resident Population plus Armed Forces Overseas" section of
+# https://www.census.gov/data/tables/time-series/demo/popest/2010s-national-detail.html
 csvFile2011 = 'data_files\\nc-est2019-alldata-p-file04.csv'
 csvFile2012 = 'data_files\\nc-est2019-alldata-p-file06.csv'
 csvFile2013 = 'data_files\\nc-est2019-alldata-p-file08.csv'
@@ -15,9 +15,8 @@ csvFile2019 = 'data_files\\nc-est2019-alldata-p-file20.csv'
 csvFile2020 = 'data_files\\nc-est2019-alldata-p-file22.csv'
 
 def read_and_transform_data(*files):
-
     """
-    Reads in the data from each CSV file, transforms it to fit the target schema, and concatenates the results.
+    Read in the data from each CSV file, transform it to fit the target schema, and concatenate the results into one dataframe.
 
     Parameters:
     -----------
@@ -26,27 +25,57 @@ def read_and_transform_data(*files):
 
     Returns:
     -----------
-    * df: pandas dataframe
+    * df: pandas.DataFrame
         The transformed and concatenated data.
 
     """
 
+    # Stores the cumulative data as it is read in from the different CSV files and transformed.
+    df = pd.DataFrame(columns=['Year', 'Age', 'Population'])
+
     for file in files:
         data = read_csv_file(file)
         transformedData = transform_data(data)
-        global mainDf
-        mainDf = pd.concat([mainDf, transformedData])
+        df = pd.concat([df, transformedData])
     
-    return mainDf
+    return df
 
-# Read in the CSV file.
 def read_csv_file(filePath):
+    """
+    Read in the data from each CSV file, isolate the columns of interest, and return the data as a dataframe.
+
+    Parameters:
+    -----------
+    * filePath : string
+        Filepath to the CSV file.
+
+    Returns:
+    -----------
+    * df: pandas.DataFrame
+        The data for the columns of interest.
+
+    """
+
     df = pd.read_csv(filepath_or_buffer=filePath, usecols=['MONTH', 'YEAR', 'AGE', 'TOT_POP'])
 
     return df
-    
-# Isolate the data that we are interested in - year, age, and population.
+
 def transform_data(df):
+    """
+    Transform the data to fit the target schema, and return the data as a dataframe.
+
+    Parameters:
+    -----------
+    * df : pandas.DataFrame
+        The data to transform.
+
+    Returns:
+    -----------
+    * df: pandas.DataFrame
+        The transformed data.
+
+    """
+
     # Filter out the unneeded rows.
     df = df[(df.MONTH == 7) & (df.AGE != 999)]
 
@@ -56,10 +85,10 @@ def transform_data(df):
     # Rename the columns.
     df = df.rename(mapper={'YEAR': 'Year', 'AGE': 'Age', 'TOT_POP': 'Population'}, axis='columns')
 
-    # Convert each dataframe column to integer type.
+    # Convert each column to integer type.
     df = df.astype({'Year': int, 'Age': int, 'Population': int})
 
-    # Sum the populations of ages 85 and greater, for each year, to put that age range into one bucket - 85. Put the result in a second dataframe.
+    # Sum the populations of ages 85 and greater, for each year, to put that age range into one bucket - 85. Put the result into a second dataframe.
     dfEightyFiveBucket = df[df.Age >= 85]
     dfEightyFiveBucket = dfEightyFiveBucket.groupby(['Year']).sum()
     dfEightyFiveBucket['Age'] = 85
@@ -68,14 +97,26 @@ def transform_data(df):
     # Filter out ages 85 and greater from the first dataframe.
     df = df[df.Age < 85]
 
-    # Concatenate the second dataframe with the first dataframe.
+    # Concatenate the first and second dataframes.
     df = pd.concat([df, dfEightyFiveBucket])
 
     return df
 
 def write_to_csv(df, filePath):
+    """
+    Write the data to a CSV file.
+
+    Parameters:
+    -----------
+    * df : pandas.DataFrame
+        The data to write.
+
+    * filePath : string
+        The filepath to write the data to.
+
+    """
+
     df.to_csv(path_or_buf=filePath, index=False)
-    print(df)
 
 def main():
     data = read_and_transform_data(csvFile2011, csvFile2012, csvFile2013, csvFile2014,
