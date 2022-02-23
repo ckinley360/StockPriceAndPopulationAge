@@ -42,7 +42,7 @@ def read_and_transform_data(*files):
 
 def read_csv_file(filePath):
     """
-    Read in the data from each CSV file, isolate the columns of interest, and return the data as a dataframe.
+    Read in the data from the CSV file, isolate the columns of interest, and return the data as a dataframe.
 
     Parameters:
     -----------
