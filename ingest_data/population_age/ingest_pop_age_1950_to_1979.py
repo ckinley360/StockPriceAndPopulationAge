@@ -35,7 +35,7 @@ def read_and_transform_data(*files):
 
 def read_excel_file(filePath):
     """
-    Read in the data from each Excel file, isolate the columns of interest, and return the data as a dictionary.
+    Read in the data from the Excel file, isolate the columns of interest, and return the data as a dictionary.
     
     Parameters:
     -----------
