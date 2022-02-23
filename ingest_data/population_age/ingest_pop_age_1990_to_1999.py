@@ -7,13 +7,46 @@ parameters = {
     'key': 'my key'
 }
 
-# Issue a GET request to the API to get the data we are interested in - year, age, and population.
-# Return a string representation of the response.
-def getData(url, parameters):
-    response = requests.get(url=url, params=parameters)
-    return response.text
+def get_data(url, parameters):
+    """
+    Issue a GET request to the REST API to get the data we are interested in - population by single year of age for the years 1990-1999.
 
-def parseData(data):
+    Parameters:
+    -----------
+    * url : string
+        The API URL path.
+
+    * parameters : dictionary
+        The GET request parameters.
+
+    Returns:
+    -----------
+    * responseString : string
+        A string representation of the server's response.
+
+    """
+    
+    response = requests.get(url=url, params=parameters)
+    responseString = response.text
+    
+    return responseString
+
+def transform_data(data):
+    """
+    Transform the data to fit the target schema, and return the data as a dataframe.
+
+    Parameters:
+    -----------
+    * data : string
+        The data to transform.
+
+    Returns:
+    -----------
+    * df : pandas.DataFrame
+        The transformed data.
+
+    """
+    
     # Remove double quotes, left square bracket, and right square bracket.
     data = data.replace('"', '').replace('[', '').replace(']', '')
 
@@ -50,12 +83,25 @@ def parseData(data):
     return df
     
 def write_to_csv(df, filePath):
+    """
+    Write the data to a CSV file.
+
+    Parameters:
+    -----------
+    * df : pandas.DataFrame
+        The data to write.
+
+    * filePath : string
+        The filepath to write the data to.
+
+    """
+
     df.to_csv(path_or_buf=filePath, index=False)
 
 def main():
-    data = getData(url, parameters)
-    parsedData = parseData(data)
-    write_to_csv(parsedData, 'normalized_data_files/1990_to_1999_normalized.csv')
+    data = get_data(url, parameters)
+    transformedData = transform_data(data)
+    write_to_csv(transformedData, 'normalized_data_files/1990_to_1999_normalized.csv')
 
 if __name__ == '__main__':
     main()
