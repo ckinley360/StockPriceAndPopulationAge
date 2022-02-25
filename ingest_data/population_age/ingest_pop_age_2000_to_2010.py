@@ -1,13 +1,17 @@
 import pandas as pd
 
-# Filepath to the CSV file containing population by single year of age for the years 2000-2010.
-# Sourced from "Intercensal Estimates of the Resident Population by Single Year of Age, Sex, Race, and Hispanic Origin for the United States: April 1, 2000 to July 1, 2010" section of
+# Filepath to the CSV file containing population by single year of age 
+# for the years 2000-2010. Sourced from "Intercensal Estimates of the 
+# Resident Population by Single Year of Age, Sex, Race, and Hispanic 
+# Origin for the United States: April 1, 2000 to July 1, 2010" 
+# section of
 # https://www.census.gov/data/datasets/time-series/demo/popest/intercensal-2000-2010-national.html
 csvFile2000to2010 = 'data_files\\us-est00int-alldata.csv'
 
 def read_csv_file(filePath):
     """
-    Read in the data from the CSV file, isolate the columns of interest, and return the data as a dataframe.
+    Read in the data from the CSV file, isolate the columns of interest,
+    and return the data as a dataframe.
     
     Parameters:
     -----------
@@ -21,13 +25,15 @@ def read_csv_file(filePath):
 
     """
     
-    df = pd.read_csv(filepath_or_buffer=filePath, usecols=['MONTH', 'YEAR', 'AGE', 'TOT_POP'])
+    df = pd.read_csv(filepath_or_buffer=filePath, 
+                     usecols=['MONTH', 'YEAR', 'AGE', 'TOT_POP'])
 
     return df
 
 def transform_data(df):
     """
-    Transform the data to fit the target schema, and return the data as a dataframe.
+    Transform the data to fit the target schema, and return the data as 
+    a dataframe.
     
     Parameters:
     -----------
@@ -48,7 +54,10 @@ def transform_data(df):
     df = df[['YEAR', 'AGE', 'TOT_POP']]
 
     # Rename the columns.
-    df = df.rename(mapper={'YEAR': 'Year', 'AGE': 'Age', 'TOT_POP': 'Population'}, axis='columns')
+    df = df.rename(mapper={'YEAR': 'Year', 
+                           'AGE': 'Age', 
+                           'TOT_POP': 'Population'},
+                   axis='columns')
 
     return df
 
@@ -71,7 +80,8 @@ def write_to_csv(df, filePath):
 def main():
     df = read_csv_file(csvFile2000to2010)
     transformedDf = transform_data(df)
-    write_to_csv(transformedDf, 'normalized_data_files/2000_to_2010_normalized.csv')
+    write_to_csv(transformedDf,
+                 'normalized_data_files/2000_to_2010_normalized.csv')
 
 if __name__ == '__main__':
     main()
