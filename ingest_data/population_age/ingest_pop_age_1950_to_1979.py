@@ -1,15 +1,16 @@
 import pandas as pd
 
-# Filepaths to the Excel files containing population by single year of age for the years 1950-1979.
-# Sourced from "Population by age, sex, and race" section of
-# https://www.census.gov/data/tables/time-series/demo/popest/pre-1980-national.html
+# Filepaths to the Excel files containing population by single year of 
+# age for the years 1950-1979. Sourced from "Population by age, sex, 
+# and race" section of https://www.census.gov/data/tables/time-series/demo/popest/pre-1980-national.html
 excelFile1950s = 'data_files\pe-11-1950s.xls'
 excelFile1960s = 'data_files\pe-11-1960s.xls'
 excelFile1970s = 'data_files\pe-11-1970s.xls'
 
 def read_and_transform_data(*filePaths):
     """
-    Read in the data from each Excel file, transform it to fit the target schema, and concatenate the results into one dataframe.
+    Read in the data from each Excel file, transform it to fit the 
+    target schema, and concatenate the results into one dataframe.
     
     Parameters:
     -----------
@@ -23,7 +24,8 @@ def read_and_transform_data(*filePaths):
     
     """
 
-    # Stores the cumulative data as it is read in from the different Excel files and transformed.
+    # Stores the cumulative data as it is read in from the different 
+    # Excel files and transformed.
     df = pd.DataFrame(columns=['Year', 'Age', 'Population'])
 
     for filePath in filePaths:
@@ -35,7 +37,8 @@ def read_and_transform_data(*filePaths):
 
 def read_excel_file(filePath):
     """
-    Read in the data from the Excel file, isolate the columns of interest, and return the data as a dictionary.
+    Read in the data from the Excel file, isolate the columns of 
+    interest, and return the data as a dictionary.
     
     Parameters:
     -----------
@@ -51,13 +54,15 @@ def read_excel_file(filePath):
     
     """
     
-    sheetsDict = pd.read_excel(io=filePath, sheet_name=None, header=5, names=['Age','Population'], usecols=[0,1])
+    sheetsDict = pd.read_excel(io=filePath, sheet_name=None, header=5, 
+                               names=['Age','Population'], usecols=[0,1])
 
     return sheetsDict
 
 def transform_data(sheetsDict):
     """
-    Transform the data to fit the target schema, and return the data as a dataframe.
+    Transform the data to fit the target schema, and return the data as
+    a dataframe.
     
     Parameters:
     -----------
@@ -71,13 +76,16 @@ def transform_data(sheetsDict):
     
     """
 
-    # Extract the data from each sheet, filter out unneeded rows, and normalize.
+    # Extract the data from each sheet, filter out unneeded rows, and 
+    # normalize.
     for sheetName, sheetDf in sheetsDict.items():
-        sheetDf = sheetDf[(sheetDf.Population.notnull()) & (sheetDf.Age != 'All ages')]
+        sheetDf = sheetDf[(sheetDf.Population.notnull()) & 
+                          (sheetDf.Age != 'All ages')]
         sheetDf = sheetDf.astype({'Population': int})
         sheetDf = sheetDf.replace(to_replace='85+', value='85')
 
-        # Add a column that contains the year of the population estimate, then rearrange the columns.
+        # Add a column that contains the year of the population 
+        # estimate, then rearrange the columns.
         sheetDf['Year'] = sheetName
         sheetDf = sheetDf[['Year', 'Age', 'Population']]
 
@@ -100,7 +108,8 @@ def write_to_csv(df, filePath):
     df.to_csv(path_or_buf=filePath, index=False)
 
 def main():
-    data = read_and_transform_data(excelFile1950s, excelFile1960s, excelFile1970s)
+    data = read_and_transform_data(excelFile1950s, excelFile1960s, 
+                                   excelFile1970s)
     write_to_csv(data, 'normalized_data_files/1950_to_1979_normalized.csv')
 
 if __name__ == '__main__':
