@@ -1,7 +1,8 @@
 import pandas as pd
 
-# Filepaths to the CSV files containing population by single year of age for the years 2011-2020.
-# Sourced from "Monthly Postcensal Resident Population plus Armed Forces Overseas" section of
+# Filepaths to the CSV files containing population by single year of age
+# for the years 2011-2020. Sourced from "Monthly Postcensal Resident 
+# Population plus Armed Forces Overseas" section of
 # https://www.census.gov/data/tables/time-series/demo/popest/2010s-national-detail.html
 csvFile2011 = 'data_files\\nc-est2019-alldata-p-file04.csv'
 csvFile2012 = 'data_files\\nc-est2019-alldata-p-file06.csv'
@@ -16,7 +17,8 @@ csvFile2020 = 'data_files\\nc-est2019-alldata-p-file22.csv'
 
 def read_and_transform_data(*filePaths):
     """
-    Read in the data from each CSV file, transform it to fit the target schema, and concatenate the results into one dataframe.
+    Read in the data from each CSV file, transform it to fit the target 
+    schema, and concatenate the results into one dataframe.
 
     Parameters:
     -----------
@@ -30,7 +32,8 @@ def read_and_transform_data(*filePaths):
 
     """
 
-    # Stores the cumulative data as it is read in from the different CSV files and transformed.
+    # Stores the cumulative data as it is read in from the different CSV
+    # files and transformed.
     df = pd.DataFrame(columns=['Year', 'Age', 'Population'])
 
     for filePath in filePaths:
@@ -42,7 +45,8 @@ def read_and_transform_data(*filePaths):
 
 def read_csv_file(filePath):
     """
-    Read in the data from the CSV file, isolate the columns of interest, and return the data as a dataframe.
+    Read in the data from the CSV file, isolate the columns of interest,
+    and return the data as a dataframe.
 
     Parameters:
     -----------
@@ -56,13 +60,15 @@ def read_csv_file(filePath):
 
     """
 
-    df = pd.read_csv(filepath_or_buffer=filePath, usecols=['MONTH', 'YEAR', 'AGE', 'TOT_POP'])
+    df = pd.read_csv(filepath_or_buffer=filePath, 
+                     usecols=['MONTH', 'YEAR', 'AGE', 'TOT_POP'])
 
     return df
 
 def transform_data(df):
     """
-    Transform the data to fit the target schema, and return the data as a dataframe.
+    Transform the data to fit the target schema, and return the data as 
+    a dataframe.
 
     Parameters:
     -----------
@@ -83,12 +89,19 @@ def transform_data(df):
     df = df[['YEAR', 'AGE', 'TOT_POP']]
 
     # Rename the columns.
-    df = df.rename(mapper={'YEAR': 'Year', 'AGE': 'Age', 'TOT_POP': 'Population'}, axis='columns')
+    df = df.rename(mapper={'YEAR': 'Year', 
+                           'AGE': 'Age', 
+                           'TOT_POP': 'Population'}, 
+                   axis='columns')
 
     # Convert each column to integer type.
-    df = df.astype({'Year': int, 'Age': int, 'Population': int})
+    df = df.astype({'Year': int, 
+                    'Age': int, 
+                    'Population': int})
 
-    # Sum the populations of ages 85 and greater, for each year, to put that age range into one bucket - 85. Put the result into a second dataframe.
+    # Sum the populations of ages 85 and greater, for each year, to put 
+    # that age range into one bucket - 85. Put the result into a 
+    # second dataframe.
     dfEightyFiveBucket = df[df.Age >= 85]
     dfEightyFiveBucket = dfEightyFiveBucket.groupby(['Year']).sum()
     dfEightyFiveBucket['Age'] = 85
@@ -119,8 +132,10 @@ def write_to_csv(df, filePath):
     df.to_csv(path_or_buf=filePath, index=False)
 
 def main():
-    data = read_and_transform_data(csvFile2011, csvFile2012, csvFile2013, csvFile2014,
-                                   csvFile2015, csvFile2016, csvFile2017, csvFile2018, csvFile2019, csvFile2020)
+    data = read_and_transform_data(csvFile2011, csvFile2012, csvFile2013, 
+                                   csvFile2014, csvFile2015, csvFile2016, 
+                                   csvFile2017, csvFile2018, csvFile2019, 
+                                   csvFile2020)
     write_to_csv(data, 'normalized_data_files/2011_to_2020_normalized.csv')
 
 if __name__ == '__main__':
