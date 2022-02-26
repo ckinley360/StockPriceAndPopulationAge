@@ -7,7 +7,7 @@ import requests
 url = 'https://api.census.gov/data/1990/pep/int_natresafo'
 parameters = {
     'get': 'YEAR,AGE,TOT_POP',
-    'key': '4f347f79e3d1f251e0217b127cc871bb347baad3'
+    'key': 'my key'
 }
 
 def get_data(url, parameters):
