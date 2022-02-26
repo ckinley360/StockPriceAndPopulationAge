@@ -31,4 +31,4 @@ Since each unique data source is structured differently, I normalized the popula
 Due to some data sources lumping all ages greater than 84 into one bucket - 85+ - the age 85 in my schema represents 85+. 
 
 # Driver Module
-The driver module for ingesting the population age data is *ingest_pop_age.py*.
+The driver module for ingesting the population age data is **ingest_pop_age.py**.
