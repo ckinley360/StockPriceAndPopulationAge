@@ -14,12 +14,12 @@ def read_and_transform_data(*filePaths):
     
     Parameters:
     -----------
-    * *filePaths : string
+    * *filePaths: string
         Filepaths to Excel files.
     
     Returns:
     -----------
-    * df : pandas.DataFrame
+    * df: pandas.DataFrame
         The transformed and concatenated data.
     
     """
@@ -42,12 +42,12 @@ def read_excel_file(filePath):
     
     Parameters:
     -----------
-    * filePath : string
+    * filePath: string
         Filepath to the Excel file.
     
     Returns:
     -----------
-    * sheetsDict : dictionary
+    * sheetsDict: dictionary
         The data for the columns of interest.
         Key = sheet name
         Value = sheet data
@@ -66,15 +66,19 @@ def transform_data(sheetsDict):
     
     Parameters:
     -----------
-    * sheetsDict : dictionary
+    * sheetsDict: dictionary
         The data to transform.
     
     Returns:
     -----------
-    * sheetDf: pandas.DataFrame
+    * df: pandas.DataFrame
         The transformed data.
     
     """
+
+    # Stores the cumulative data as it is read in from the different
+    # sheets in the Excel file and transformed.
+    df = pd.DataFrame(columns=['Year', 'Age', 'Population'])
 
     # Extract the data from each sheet, filter out unneeded rows, and 
     # normalize.
@@ -89,7 +93,11 @@ def transform_data(sheetsDict):
         sheetDf['Year'] = sheetName
         sheetDf = sheetDf[['Year', 'Age', 'Population']]
 
-        return sheetDf
+        # Concatenate the data from this sheet with the
+        # cumulative dataframe
+        df = pd.concat([df, sheetDf])
+
+    return df
 
 def write_to_csv(df, filePath):
     """
@@ -97,10 +105,10 @@ def write_to_csv(df, filePath):
     
     Parameters:
     -----------
-    * df : pandas.DataFrame
+    * df: pandas.DataFrame
         The data to write.
     
-    * filePath : string
+    * filePath: string
         The filepath to write the data to.
     
     """
