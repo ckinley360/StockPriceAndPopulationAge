@@ -22,7 +22,7 @@ def read_and_transform_data(*filePaths):
 
     Parameters:
     -----------
-    * *filePaths : string
+    * *filePaths: string
         Filepaths to CSV files.
 
     Returns:
@@ -50,7 +50,7 @@ def read_csv_file(filePath):
 
     Parameters:
     -----------
-    * filePath : string
+    * filePath: string
         Filepath to the CSV file.
 
     Returns:
@@ -72,7 +72,7 @@ def transform_data(df):
 
     Parameters:
     -----------
-    * df : pandas.DataFrame
+    * df: pandas.DataFrame
         The data to transform.
 
     Returns:
@@ -121,10 +121,10 @@ def write_to_csv(df, filePath):
 
     Parameters:
     -----------
-    * df : pandas.DataFrame
+    * df: pandas.DataFrame
         The data to write.
 
-    * filePath : string
+    * filePath: string
         The filepath to write the data to.
 
     """
