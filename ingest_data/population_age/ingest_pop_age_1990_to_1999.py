@@ -7,7 +7,7 @@ import requests
 url = 'https://api.census.gov/data/1990/pep/int_natresafo'
 parameters = {
     'get': 'YEAR,AGE,TOT_POP',
-    'key': 'my key'
+    'key': '4f347f79e3d1f251e0217b127cc871bb347baad3'
 }
 
 def get_data(url, parameters):
@@ -18,15 +18,15 @@ def get_data(url, parameters):
 
     Parameters:
     -----------
-    * url : string
+    * url: string
         The API URL path.
 
-    * parameters : dictionary
+    * parameters: dictionary
         The GET request parameters.
 
     Returns:
     -----------
-    * responseString : string
+    * responseString: string
         A string representation of the server's response.
 
     """
@@ -43,12 +43,12 @@ def transform_data(data):
 
     Parameters:
     -----------
-    * data : string
+    * data: string
         The data to transform.
 
     Returns:
     -----------
-    * df : pandas.DataFrame
+    * df: pandas.DataFrame
         The transformed data.
 
     """
@@ -101,10 +101,10 @@ def write_to_csv(df, filePath):
 
     Parameters:
     -----------
-    * df : pandas.DataFrame
+    * df: pandas.DataFrame
         The data to write.
 
-    * filePath : string
+    * filePath: string
         The filepath to write the data to.
 
     """
