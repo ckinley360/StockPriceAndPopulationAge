@@ -15,7 +15,7 @@ import pandas as pd
 
 # The fully-qualified path to the normalized_data_files directory.
 # Needs to be changed to wherever this directory lives.
-pathToNormalizedDataDirectory = 'my unique path'
+pathToNormalizedDataDirectory = 'my/unique/path'
 
 def combine_csv_files():
     """
