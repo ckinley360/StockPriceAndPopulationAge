@@ -23,12 +23,12 @@ def read_and_transform_data(*filePaths):
     
     Parameters:
     -----------
-    * *filePaths : string
+    * *filePaths: string
         Filepaths to text files.
     
     Returns:
     -----------
-    * list : list
+    * list: list
         The transformed and concatenated data.
     
     """
@@ -50,12 +50,12 @@ def read_text_file(filePath):
 
     Parameters:
     -----------
-    * filePath : string
+    * filePath: string
         Filepath to the text file.
 
     Returns:
     -----------
-    * file : file
+    * file: file
         The text file.
 
     """
@@ -71,12 +71,12 @@ def transform_data(file):
     
     Parameters:
     -----------
-    * file : file
+    * file: file
         The file containing the data to transform.
     
     Returns:
     -----------
-    * list : list
+    * list: list
         The transformed data.
     
     """
@@ -143,10 +143,10 @@ def write_to_csv(list, filePath):
     
     Parameters:
     -----------
-    * list : list
+    * list: list
         The data to write.
     
-    * filePath : string
+    * filePath: string
         The filepath to write the data to.
     
     """
