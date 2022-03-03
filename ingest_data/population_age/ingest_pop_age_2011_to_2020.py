@@ -4,16 +4,16 @@ import pandas as pd
 # for the years 2011-2020. Sourced from "Monthly Postcensal Resident 
 # Population plus Armed Forces Overseas" section of
 # https://www.census.gov/data/tables/time-series/demo/popest/2010s-national-detail.html
-csvFile2011 = 'data_files\\nc-est2019-alldata-p-file04.csv'
-csvFile2012 = 'data_files\\nc-est2019-alldata-p-file06.csv'
-csvFile2013 = 'data_files\\nc-est2019-alldata-p-file08.csv'
-csvFile2014 = 'data_files\\nc-est2019-alldata-p-file10.csv'
-csvFile2015 = 'data_files\\nc-est2019-alldata-p-file12.csv'
-csvFile2016 = 'data_files\\nc-est2019-alldata-p-file14.csv'
-csvFile2017 = 'data_files\\nc-est2019-alldata-p-file16.csv'
-csvFile2018 = 'data_files\\nc-est2019-alldata-p-file18.csv'
-csvFile2019 = 'data_files\\nc-est2019-alldata-p-file20.csv'
-csvFile2020 = 'data_files\\nc-est2019-alldata-p-file22.csv'
+csvFile2011 = 'ingest_data/population_age/data_files/nc-est2019-alldata-p-file04.csv'
+csvFile2012 = 'ingest_data/population_age/data_files/nc-est2019-alldata-p-file06.csv'
+csvFile2013 = 'ingest_data/population_age/data_files/nc-est2019-alldata-p-file08.csv'
+csvFile2014 = 'ingest_data/population_age/data_files/nc-est2019-alldata-p-file10.csv'
+csvFile2015 = 'ingest_data/population_age/data_files/nc-est2019-alldata-p-file12.csv'
+csvFile2016 = 'ingest_data/population_age/data_files/nc-est2019-alldata-p-file14.csv'
+csvFile2017 = 'ingest_data/population_age/data_files/nc-est2019-alldata-p-file16.csv'
+csvFile2018 = 'ingest_data/population_age/data_files/nc-est2019-alldata-p-file18.csv'
+csvFile2019 = 'ingest_data/population_age/data_files/nc-est2019-alldata-p-file20.csv'
+csvFile2020 = 'ingest_data/population_age/data_files/nc-est2019-alldata-p-file22.csv'
 
 def read_and_transform_data(*filePaths):
     """
@@ -136,7 +136,8 @@ def main():
                                    csvFile2014, csvFile2015, csvFile2016, 
                                    csvFile2017, csvFile2018, csvFile2019, 
                                    csvFile2020)
-    write_to_csv(data, 'normalized_data_files/2011_to_2020_normalized.csv')
+    write_to_csv(data,
+                 'ingest_data/population_age/normalized_data_files/2011_to_2020_normalized.csv')
 
 if __name__ == '__main__':
     main()

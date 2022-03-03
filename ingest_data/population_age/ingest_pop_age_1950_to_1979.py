@@ -3,9 +3,9 @@ import pandas as pd
 # Filepaths to the Excel files containing population by single year of 
 # age for the years 1950-1979. Sourced from "Population by age, sex, 
 # and race" section of https://www.census.gov/data/tables/time-series/demo/popest/pre-1980-national.html
-excelFile1950s = 'data_files\pe-11-1950s.xls'
-excelFile1960s = 'data_files\pe-11-1960s.xls'
-excelFile1970s = 'data_files\pe-11-1970s.xls'
+excelFile1950s = 'ingest_data/population_age/data_files/pe-11-1950s.xls'
+excelFile1960s = 'ingest_data/population_age/data_files/pe-11-1960s.xls'
+excelFile1970s = 'ingest_data/population_age/data_files/pe-11-1970s.xls'
 
 def read_and_transform_data(*filePaths):
     """
@@ -118,7 +118,8 @@ def write_to_csv(df, filePath):
 def main():
     data = read_and_transform_data(excelFile1950s, excelFile1960s, 
                                    excelFile1970s)
-    write_to_csv(data, 'normalized_data_files/1950_to_1979_normalized.csv')
+    write_to_csv(data,
+                 'ingest_data/population_age/normalized_data_files/1950_to_1979_normalized.csv')
 
 if __name__ == '__main__':
     main()

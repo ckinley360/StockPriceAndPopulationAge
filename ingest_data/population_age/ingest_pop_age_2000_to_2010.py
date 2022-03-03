@@ -6,7 +6,7 @@ import pandas as pd
 # Origin for the United States: April 1, 2000 to July 1, 2010" 
 # section of
 # https://www.census.gov/data/datasets/time-series/demo/popest/intercensal-2000-2010-national.html
-csvFile2000to2010 = 'data_files\\us-est00int-alldata.csv'
+csvFile2000to2010 = 'ingest_data/population_age/data_files/us-est00int-alldata.csv'
 
 def read_csv_file(filePath):
     """
@@ -81,7 +81,7 @@ def main():
     df = read_csv_file(csvFile2000to2010)
     transformedDf = transform_data(df)
     write_to_csv(transformedDf,
-                 'normalized_data_files/2000_to_2010_normalized.csv')
+                 'ingest_data/population_age/normalized_data_files/2000_to_2010_normalized.csv')
 
 if __name__ == '__main__':
     main()

@@ -5,16 +5,16 @@ import csv
 # Intercensal Estimates of Resident Population plus Armed Forces 
 # overseas" section of
 # https://www.census.gov/data/datasets/time-series/demo/popest/1980s-national.html
-textFile1980to1981 = 'data_files\E8081PQI.TXT'
-textFile1981to1982 = 'data_files\E8182PQI.TXT'
-textFile1982to1983 = 'data_files\E8283PQI.TXT'
-textFile1983to1984 = 'data_files\E8384PQI.TXT'
-textFile1984to1985 = 'data_files\E8485PQI.TXT'
-textFile1985to1986 = 'data_files\E8586PQI.TXT'
-textFile1986to1987 = 'data_files\E8687PQI.TXT'
-textFile1987to1988 = 'data_files\E8788PQI.TXT'
-textFile1988to1989 = 'data_files\E8889PQI.TXT'
-textFile1989to1990 = 'data_files\E8990PQI.TXT'
+textFile1980to1981 = 'ingest_data/population_age/data_files/E8081PQI.TXT'
+textFile1981to1982 = 'ingest_data/population_age/data_files/E8182PQI.TXT'
+textFile1982to1983 = 'ingest_data/population_age/data_files/E8283PQI.TXT'
+textFile1983to1984 = 'ingest_data/population_age/data_files/E8384PQI.TXT'
+textFile1984to1985 = 'ingest_data/population_age/data_files/E8485PQI.TXT'
+textFile1985to1986 = 'ingest_data/population_age/data_files/E8586PQI.TXT'
+textFile1986to1987 = 'ingest_data/population_age/data_files/E8687PQI.TXT'
+textFile1987to1988 = 'ingest_data/population_age/data_files/E8788PQI.TXT'
+textFile1988to1989 = 'ingest_data/population_age/data_files/E8889PQI.TXT'
+textFile1989to1990 = 'ingest_data/population_age/data_files/E8990PQI.TXT'
 
 def read_and_transform_data(*filePaths):
     """
@@ -165,7 +165,8 @@ def main():
                                    textFile1984to1985, textFile1985to1986, 
                                    textFile1986to1987, textFile1987to1988, 
                                    textFile1988to1989, textFile1989to1990)
-    write_to_csv(data, 'normalized_data_files/1980_to_1989_normalized.csv')
+    write_to_csv(data,
+                 'ingest_data/population_age/normalized_data_files/1980_to_1989_normalized.csv')
 
 if __name__ == '__main__':
     main()

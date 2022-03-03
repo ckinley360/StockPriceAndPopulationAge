@@ -115,7 +115,7 @@ def main():
     data = get_data(url, parameters)
     transformedData = transform_data(data)
     write_to_csv(transformedData, 
-                 'normalized_data_files/1990_to_1999_normalized.csv')
+                 'ingest_data/population_age/normalized_data_files/1990_to_1999_normalized.csv')
 
 if __name__ == '__main__':
     main()
