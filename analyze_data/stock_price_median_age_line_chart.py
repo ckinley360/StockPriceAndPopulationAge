@@ -77,7 +77,7 @@ def plot_data(data):
     fig.legend(loc='upper center')
     fig.set_size_inches(9, 6)
 
-    # Save the plot as a file.
+    # Save the chart as a file.
     fig.savefig('analyze_data/stock_price_median_age_line_chart.jpg',
                 format='jpeg',
                 dpi=100)
