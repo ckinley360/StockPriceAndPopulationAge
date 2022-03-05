@@ -1,4 +1,5 @@
 import pandas as pd
+import matplotlib as mpl
 import matplotlib.pyplot as plt
 
 # Resources:
@@ -23,17 +24,23 @@ def plot_data(data):
     fig, ax = plt.subplots()
 
     # Plot the stock data.
-    ax.plot(data['Year'], data['Close Price'], color='red', marker='o')
+    ax.plot(data['Year'], data['Close Price'], color='red', marker='o', label='S&P 500 Close Price')
     ax.set_xlabel('Year')
-    ax.set_ylabel('Close Price')
+    ax.set_ylabel('S&P 500 Close Price')
 
     # Plot the age data.
     ax2 = ax.twinx()
-    ax2.plot(data['Year'], data['Median Age'], color='blue', marker='o')
+    ax2.plot(data['Year'], data['Median Age'], color='blue', marker='o', label='Median Age')
     ax2.set_ylabel('Median Age')
 
-    # Display the plot.
-    plt.show()
+    # Modify figure settings.
+    fig.legend(loc='upper center')
+    fig.set_size_inches(9, 6)
+
+    # Save the plot as a file.
+    fig.savefig('analyze_data/stock_price_median_age_line_chart.jpg',
+                format='jpeg',
+                dpi=100)
 
 def main():
     df = read_and_join_data(stockPriceCsv, medianAgeCsv)
