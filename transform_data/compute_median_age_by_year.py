@@ -67,7 +67,7 @@ def compute_median_age(df):
     
     # Since the data is preaggregated, we need to deaggregate it before
     # computing the median.
-    median = (np.repeat(df['Age'], df['Population'])).median()
+    median = int((np.repeat(df['Age'], df['Population'])).median())
 
     return median
 
