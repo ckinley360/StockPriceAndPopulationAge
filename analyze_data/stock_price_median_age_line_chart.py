@@ -63,6 +63,7 @@ def plot_data(data):
             label='S&P 500 Close Price')
     ax.set_xlabel('Year')
     ax.set_ylabel('S&P 500 Close Price')
+    ax.yaxis.set_major_formatter('${x:,.0f}')
 
     # Plot the age data.
     ax2 = ax.twinx()
