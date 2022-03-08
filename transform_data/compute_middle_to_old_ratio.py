@@ -61,6 +61,9 @@ def compute_middle_to_old_ratio(df):
     # Drop the Middle and Old columns since we no longer need them.
     df = df.drop(['Middle', 'Old'], axis=1)
 
+    # Round the ratio to 3 decimal places.
+    df['M/O Ratio'] = df['M/O Ratio'].round(3)
+
     return df
 
 def write_to_csv(df, filePath):
