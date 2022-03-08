@@ -26,7 +26,6 @@ def read_csv_file(filePath):
 
     return df
 
-
 def compute_middle_to_old_ratio(df):
     """
     Compute the middle-to-old ratio by year. Middle age is defined as
@@ -64,7 +63,6 @@ def compute_middle_to_old_ratio(df):
 
     return df
 
-
 def write_to_csv(df, filePath):
     """
     Write the data to a CSV file.
@@ -80,7 +78,6 @@ def write_to_csv(df, filePath):
     """
 
     df.to_csv(path_or_buf=filePath, index=True)
-
 
 def main():
     data = read_csv_file(population1950to2020)
