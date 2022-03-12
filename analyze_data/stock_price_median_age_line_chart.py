@@ -41,9 +41,8 @@ def read_and_join_data(stockPriceCsv, medianAgeCsv):
 
 def plot_data(data):
     """
-    Plot the stock price and median age data on a line chart with the 
-    same x-axis (Year), each with its own y-axis. Then, save an image of
-    the chart. 
+    Plot the stock price and median age data on side-by-side line
+    charts. Then, save an image of the chart.
     
     Parameters:
     -----------
@@ -53,30 +52,27 @@ def plot_data(data):
     """
     
     # Create figure and axis objects.
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(nrows=1, ncols=2, figsize=(11, 6))
 
     # Plot the stock data.
-    ax.plot(data['Year'],
+    ax[0].plot(data['Year'],
             data['Close Price'],
             color='red',
             marker='o',
-            label='S&P 500 Close Price')
-    ax.set_xlabel('Year')
-    ax.set_ylabel('S&P 500 Close Price')
-    ax.yaxis.set_major_formatter('${x:,.0f}')
+               label='Inflation-Adjusted S&P 500 Close Price')
+    ax[0].set_xlabel('Year')
+    ax[0].set_ylabel('Inflation-Adjusted S&P 500 Close Price')
+    ax[0].set_title('Inflation-Adjusted S&P 500 Close Price by Year')
+    ax[0].yaxis.set_major_formatter('${x:,.0f}')
 
     # Plot the age data.
-    ax2 = ax.twinx()
-    ax2.plot(data['Year'],
+    ax[1].plot(data['Year'],
              data['Median Age'],
              color='blue',
              marker='o',
              label='Median Age')
-    ax2.set_ylabel('Median Age')
-
-    # Modify figure settings.
-    fig.legend(loc='upper center')
-    fig.set_size_inches(9, 6)
+    ax[1].set_ylabel('Median Age')
+    ax[1].set_title('Median Age by Year')
 
     # Save the chart as a file.
     fig.savefig('analyze_data/stock_price_median_age_line_chart.jpg',
