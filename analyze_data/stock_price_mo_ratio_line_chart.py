@@ -76,12 +76,12 @@ def plot_data(data):
     ax[1].set_title('M/O Ratio by Year')
 
     # Highlight local maxima and minima.
-    ax[0].axvspan(1962, 1968, color='green', alpha=0.5)
-    ax[1].axvspan(1962, 1968, color='green', alpha=0.5)
-    ax[0].axvspan(1978, 1984, color='red', alpha=0.5)
-    ax[1].axvspan(1978, 1984, color='red', alpha=0.5)
-    ax[0].axvspan(1997, 2003, color='green', alpha=0.5)
-    ax[1].axvspan(1997, 2003, color='green', alpha=0.5)
+    ax[0].axvspan(1962, 1968, color='black', alpha=0.1)
+    ax[1].axvspan(1962, 1968, color='black', alpha=0.1)
+    ax[0].axvspan(1978, 1984, color='black', alpha=0.1)
+    ax[1].axvspan(1978, 1984, color='black', alpha=0.1)
+    ax[0].axvspan(1997, 2003, color='black', alpha=0.1)
+    ax[1].axvspan(1997, 2003, color='black', alpha=0.1)
 
     # Save the chart as a file.
     fig.savefig('analyze_data/stock_price_mo_ratio_line_chart.jpg',
