@@ -56,9 +56,9 @@ def plot_data(data):
 
     # Plot the stock data.
     ax[0].plot(data['Year'],
-            data['Close Price'],
-            color='red',
-            marker='o',
+               data['Close Price'],
+               color='red',
+               marker='o',
                label='Inflation-Adjusted S&P 500 Close Price')
     ax[0].set_xlabel('Year')
     ax[0].set_ylabel('Inflation-Adjusted S&P 500 Close Price')
@@ -67,10 +67,11 @@ def plot_data(data):
 
     # Plot the age data.
     ax[1].plot(data['Year'],
-             data['Median Age'],
-             color='blue',
-             marker='o',
-             label='Median Age')
+               data['Median Age'],
+               color='blue',
+               marker='o',
+               label='Median Age')
+    ax[1].set_xlabel('Year')
     ax[1].set_ylabel('Median Age')
     ax[1].set_title('Median Age by Year')
 

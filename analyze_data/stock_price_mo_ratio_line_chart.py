@@ -72,6 +72,7 @@ def plot_data(data):
                color='blue',
                marker='o',
                label='M/O Ratio')
+    ax[1].set_xlabel('Year')
     ax[1].set_ylabel('M/O Ratio')
     ax[1].set_title('M/O Ratio by Year')
 

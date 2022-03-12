@@ -74,6 +74,7 @@ def plot_data(data):
                color='blue',
                marker='o',
                label='Middle Age Population')
+    ax[1].set_xlabel('Year')
     ax[1].set_ylabel('Middle Age Population (millions)')
     ax[1].set_title('Middle Age Population by Year')
     ax[1].yaxis.set_major_formatter(mpl.ticker.FuncFormatter(millions_formatter))
