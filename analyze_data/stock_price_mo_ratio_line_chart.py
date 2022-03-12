@@ -42,9 +42,8 @@ def read_and_join_data(stockPriceCsv, moRatioCsv):
 
 def plot_data(data):
     """
-    Plot the stock price and middle-to-old ratio data on a line chart
-    with the same x-axis (Year), each with its own y-axis. Then, save 
-    an image of the chart. 
+    Plot the stock price and middle-to-old ratio data on side-by-side
+    line charts. Then, save an image of the chart. 
     
     Parameters:
     -----------
@@ -53,33 +52,36 @@ def plot_data(data):
 
     """
 
-    data['M/O Ratio'] = np.log(data['M/O Ratio'])
-
     # Create figure and axis objects.
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(nrows=1, ncols=2, figsize=(11, 6))
 
     # Plot the stock data.
-    ax.plot(data['Year'],
-            data['Close Price'],
-            color='red',
-            marker='o',
-            label='S&P 500 Close Price')
-    ax.set_xlabel('Year')
-    ax.set_ylabel('S&P 500 Close Price')
-    ax.yaxis.set_major_formatter('${x:,.0f}')
+    ax[0].plot(data['Year'],
+               data['Close Price'],
+               color='red',
+               marker='o',
+               label='S&P 500 Close Price')
+    ax[0].set_xlabel('Year')
+    ax[0].set_ylabel('S&P 500 Close Price')
+    ax[0].set_title('S&P 500 Close Price by Year')
+    ax[0].yaxis.set_major_formatter('${x:,.0f}')
 
     # Plot the m/o ratio data.
-    ax2 = ax.twinx()
-    ax2.plot(data['Year'],
-             data['M/O Ratio'],
-             color='blue',
-             marker='o',
-             label='M/O Ratio')
-    ax2.set_ylabel('M/O Ratio')
+    ax[1].plot(data['Year'],
+               data['M/O Ratio'],
+               color='blue',
+               marker='o',
+               label='M/O Ratio')
+    ax[1].set_ylabel('M/O Ratio')
+    ax[1].set_title('M/O Ratio by Year')
 
-    # Modify figure settings.
-    fig.legend(loc='upper center')
-    fig.set_size_inches(9, 6)
+    # Highlight local maxima and minima.
+    ax[0].axvspan(1962, 1968, color='green', alpha=0.5)
+    ax[1].axvspan(1962, 1968, color='green', alpha=0.5)
+    ax[0].axvspan(1978, 1984, color='red', alpha=0.5)
+    ax[1].axvspan(1978, 1984, color='red', alpha=0.5)
+    ax[0].axvspan(1997, 2003, color='green', alpha=0.5)
+    ax[1].axvspan(1997, 2003, color='green', alpha=0.5)
 
     # Save the chart as a file.
     fig.savefig('analyze_data/stock_price_mo_ratio_line_chart.jpg',
