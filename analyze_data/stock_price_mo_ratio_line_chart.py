@@ -60,10 +60,10 @@ def plot_data(data):
                data['Close Price'],
                color='red',
                marker='o',
-               label='S&P 500 Close Price')
+               label='Inflation-Adjusted S&P 500 Close Price')
     ax[0].set_xlabel('Year')
-    ax[0].set_ylabel('S&P 500 Close Price')
-    ax[0].set_title('S&P 500 Close Price by Year')
+    ax[0].set_ylabel('Inflation-Adjusted S&P 500 Close Price')
+    ax[0].set_title('Inflation-Adjusted S&P 500 Close Price by Year')
     ax[0].yaxis.set_major_formatter('${x:,.0f}')
 
     # Plot the m/o ratio data.
