@@ -3,4 +3,4 @@
 
 <img src="analyze_data/stock_price_mo_ratio_line_chart.jpg" width="650" height="400">
 
-<img src="analyze_data/stock_price_middle_age_pop_line_chart.jpg width="650" height="400">
+<img src="analyze_data/stock_price_middle_age_pop_line_chart.jpg" width="650" height="400">
