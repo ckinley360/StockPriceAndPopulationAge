@@ -8,6 +8,11 @@ The S&P 500 index is widely seen as representative of the health of the U.S. eco
 
 The U.S. Census Bureau has a treasure trove of publicly available demographic data, including the estimated population of the U.S. over time, broken down by single year of age. This is the source of the age data that I used.
 
+## Technologies Used
+- Python 3.10.2 for data ingestion, transformation, and final analysis
+- Microsoft Excel 2019 for validation that my transformations and aggregations were accurate
+- Microsoft Power BI 2.102.845 for faster exploratory analysis before coding the final analysis in Python
+
 <img src="analyze_data/stock_price_median_age_line_chart.jpg" width="650" height="400">
 
 <img src="analyze_data/stock_price_mo_ratio_line_chart.jpg" width="650" height="400">
