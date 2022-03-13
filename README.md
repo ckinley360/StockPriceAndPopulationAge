@@ -6,6 +6,8 @@ According to [Investopedia](https://www.investopedia.com/articles/basics/04/1008
 
 The S&P 500 index is widely seen as representative of the health of the U.S. economy, and since I'm interested in analyzing stock prices at a macro-level, it seemed like a great choice. I used inflation-adjusted close prices to eliminate inflation as a factor for the change in close prices so that I could have an "apples-to-apples" comparison over time.
 
+The U.S. Census Bureau has a treasure trove of publicly available demographic data, including the estimated population of the U.S. over time, broken down by single year of age. This is the source of the age data that I used.
+
 <img src="analyze_data/stock_price_median_age_line_chart.jpg" width="650" height="400">
 
 <img src="analyze_data/stock_price_mo_ratio_line_chart.jpg" width="650" height="400">
