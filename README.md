@@ -15,6 +15,9 @@ The [U.S. Census Bureau](https://www.census.gov/data.html) has a treasure trove 
 ## Technologies Used
 - Python 3.10.2 for data ingestion, transformation, and analysis
 
+## Setup
+Project dependencies are listed in the /requirements.txt file.
+
 <img src="analyze_data/stock_price_median_age_line_chart.jpg" width="650" height="400">
 
 <img src="analyze_data/stock_price_mo_ratio_line_chart.jpg" width="650" height="400">
