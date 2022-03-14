@@ -10,8 +10,6 @@ The [U.S. Census Bureau](https://www.census.gov/data.html) has a treasure trove 
 
 ## Technologies Used
 - Python 3.10.2 for data ingestion, transformation, and final analysis
-- Microsoft Excel 2019 for validation that my transformations and aggregations were accurate
-- Microsoft Power BI 2.102.845 for faster exploratory analysis before coding the final analysis in Python
 
 <img src="analyze_data/stock_price_median_age_line_chart.jpg" width="650" height="400">
 
