@@ -56,6 +56,9 @@ Due to some data sources lumping all ages greater than 84 into one bucket - 85+ 
 #### Driver Module
 The driver module for ingesting the population age data is **ingest_pop_age.py**.
 
+### Stock Price Data
+The historical inflation-adjusted S&P 500 close prices were scraped from the table on [multpl](https://www.multpl.com/inflation-adjusted-s-p-500/table/by-year). The data was filtered to the years 1950-2020, the year portion of the date was extracted, and the resulting data was written to a CSV file.
+
 <img src="analyze_data/stock_price_median_age_line_chart.jpg" width="650" height="400">
 
 <img src="analyze_data/stock_price_mo_ratio_line_chart.jpg" width="650" height="400">
