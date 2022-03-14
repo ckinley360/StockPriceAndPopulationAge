@@ -21,7 +21,9 @@ Project dependencies are listed in the /requirements.txt file.
 
 ## Data Ingestion
 ### Population Age Data
+#### Disclaimer
 
+This product uses the Census Bureau Data API but is not endorsed or certified by the Census Bureau.
 
 <img src="analyze_data/stock_price_median_age_line_chart.jpg" width="650" height="400">
 
