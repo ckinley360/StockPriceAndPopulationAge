@@ -19,6 +19,10 @@ The [U.S. Census Bureau](https://www.census.gov/data.html) has a treasure trove 
 ## Setup
 Project dependencies are listed in the /requirements.txt file.
 
+## Data Ingestion
+### Population Age Data
+
+
 <img src="analyze_data/stock_price_median_age_line_chart.jpg" width="650" height="400">
 
 <img src="analyze_data/stock_price_mo_ratio_line_chart.jpg" width="650" height="400">
