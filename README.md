@@ -72,7 +72,9 @@ Middle age is defined as ages 40-49, and old age is defined as ages 60-69. The t
 
 <img src="analyze_data/vttsx portfolio shift.jpg" width="650" height="400">
 
-The results of each transformation were written to separate CSV files.
+The higher the population of middle-aged people, the higher the demand for stocks, which puts upward pressure on stock prices. The higher the population of old-aged people, the lower the demand for stocks, which puts downward pressure on stock prices.
+
+The results of each of the three transformation were written to separate CSV files.
 
 ## Data Analysis
 Using matplotlib, each of the three statistics were plotted alongside the historical inflation-adjusted S&P 500 close prices. Some interesting observations can be made by comparing the charts.
