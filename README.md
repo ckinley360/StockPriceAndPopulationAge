@@ -68,14 +68,19 @@ To prepare the population age data for analysis, three different transformations
 * Middle-to-old ratio by year
 * Middle age population by year
 
-Middle age is defined as ages 40-49, and old age is defined as ages 60-69. The results of each transformation were written to separate CSV files.
+Middle age is defined as ages 40-49, and old age is defined as ages 60-69. The thought behind this categorization is that people's investment behavior changes as they near retirement age. People in their 40's tend to have more aggressive portfolios with a higher proportion of stocks, and they have more disposable income compared to people in their 20's and 30's who are often saving money for a down payment for a home. As people enter their 60's, their portfolio shifts away from stocks to lower-risk bonds. The "Glidepath and asset allocation" section of [Vanguard's Target Retirement 2060 Fund (VTTSX) product page](https://institutional.vanguard.com/investments/product-details/fund/1691) provides a great visual depiction of this shift:
+
+
+
+The results of each transformation were written to separate CSV files.
 
 ## Data Analysis
-Using matplotlib, each of the three statistics were plotted alongside the historical inflation-adjusted S&P 500 close prices. Some interesting observations can be made with the naked eye.
+Using matplotlib, each of the three statistics were plotted alongside the historical inflation-adjusted S&P 500 close prices. Some interesting observations can be made by comparing the charts.
 
-Around the 1970s, both stock prices and median age start an upward trend that ultimately never stops. Much of this is due to the shift of the U.S. economy away from World War II to domestic growth, as well as the end of the Baby Boom in 1964. A growing median age seems to correlate to growing stock prices. That's about the extent of the median age's usefulness, as it masks a lot of underlying details.
+Around the 1970s, both stock prices and median age start an upward trend that ultimately never stops. Much of this is due to the shift of the U.S. economy away from World War II to domestic growth, as well as the end of the Baby Boom in 1964. A growing median age seems to correlate with growing stock prices.
 <img src="analyze_data/stock_price_median_age_line_chart.jpg" width="650" height="400">
 
+Drilling down a little deeper, we compare the ratio of middle aged (40-49) population to old aged (60-69) population.
 <img src="analyze_data/stock_price_mo_ratio_line_chart.jpg" width="650" height="400">
 
 <img src="analyze_data/stock_price_middle_age_pop_line_chart.jpg" width="650" height="400">
