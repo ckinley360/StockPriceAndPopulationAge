@@ -70,7 +70,7 @@ To prepare the population age data for analysis, three different transformations
 
 Middle age is defined as ages 40-49, and old age is defined as ages 60-69. The thought behind this categorization is that people's investment behavior changes as they near retirement age. People in their 40's tend to have more aggressive portfolios with a higher proportion of stocks, and they have more disposable income compared to people in their 20's and 30's who are often saving money for a down payment for a home. As people enter their 60's, their portfolio shifts away from stocks to lower-risk bonds. The "Glidepath and asset allocation" section of [Vanguard's Target Retirement 2060 Fund (VTTSX) product page](https://institutional.vanguard.com/investments/product-details/fund/1691) provides a great visual depiction of this shift:
 
-
+<img src="analyze_data/vttsx portfolio shift.jpg" width="650" height="400">
 
 The results of each transformation were written to separate CSV files.
 
