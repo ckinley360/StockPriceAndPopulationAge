@@ -82,7 +82,7 @@ Using matplotlib, each of the three statistics were plotted alongside the histor
 Around the 1970s, both stock prices and median age start an upward trend that ultimately never stops. Much of this is due to the shift of the U.S. economy away from World War II to domestic growth, as well as the end of the Baby Boom in 1964. A growing median age seems to correlate with growing stock prices.
 <img src="analyze_data/stock_price_median_age_line_chart.jpg" width="650" height="400">
 
-Drilling down a little deeper, we compare the ratio of middle aged (40-49) population to old aged (60-69) population. 
+Drilling down a little deeper, we compare the ratio of middle aged (40-49) population to old aged (60-69) population. Both series have a local maximum in the mid 1960's, local minimum in the early 1980's, and local maximum around the turn of the century. Before the 1960's and after the turn of the century, the series go off in opposite directions, most dramatically after around 2010.
 <img src="analyze_data/stock_price_mo_ratio_line_chart.jpg" width="650" height="400">
 
 <img src="analyze_data/stock_price_middle_age_pop_line_chart.jpg" width="650" height="400">
