@@ -20,7 +20,7 @@ The [U.S. Census Bureau](https://www.census.gov/data.html) has a treasure trove 
 - Python 3.10.2
 
 ## Setup
-Project dependencies are listed in the /requirements.txt file.
+Project dependencies are listed in the **/requirements.txt** file.
 
 ## Data Ingestion
 ### Population Age Data
