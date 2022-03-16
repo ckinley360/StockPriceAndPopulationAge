@@ -30,6 +30,14 @@ To run this project:
    - Open the **ingest_pop_age.py** script, set the value of the "pathToNormalizedDataDirectory" variable to the fully-qualified path of your "normalized_data_files" directory from the repository you just cloned, and save the file.
    - Run the **ingest_pop_age.py** script.
    - Run the **ingest_stock_prices.py** script.
+3. Transform the data:
+   - Run the **compute_median_age_by_year.py** script.
+   - Run the **compute_middle_to_old_ratio.py** script.
+   - Run the **compute_middle_age_pop_by_year.py** script.
+4. Analyze the data:
+   - Run the **stock_price_median_age_line_chart.py** script.
+   - Run the **stock_price_mo_ratio_line_chart.py** script.
+   - Run the **stock_price_middle_age_pop_line_chart.py** script.
 
 ## Data Ingestion
 ### Population Age Data
