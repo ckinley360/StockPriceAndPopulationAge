@@ -22,6 +22,15 @@ The [U.S. Census Bureau](https://www.census.gov/data.html) has a treasure trove 
 ## Setup
 Project dependencies are listed in the **/requirements.txt** file.
 
+To run this project:
+1. Clone this repository.
+2. Ingest the data:
+   - Obtain an API key from the U.S. Census Bureau by requesting one [here](https://api.census.gov/data/key_signup.html).
+   - Open the **ingest_pop_age_1990_to_1999.py** script, enter your API key in the "parameters" variable, and save the file.
+   - Open the **ingest_pop_age.py** script, set the value of the "pathToNormalizedDataDirectory" variable to the fully-qualified path of your "normalized_data_files" directory from the repository you just cloned, and save the file.
+   - Run the **ingest_pop_age.py** script.
+   - Run the **ingest_stock_prices.py** script.
+
 ## Data Ingestion
 ### Population Age Data
 #### Disclaimer
