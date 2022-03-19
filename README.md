@@ -110,4 +110,4 @@ Then, we'll compute Pearson's population correlation coefficient using SciPy's *
 
 `Pearson's population correlation coefficient: 0.83`
 
-A population correlation coefficient of **0.83** tells us that there is, in fact, a fairly strong positive relationship between the middle-aged population seems to correlate with stock prices. When the middle-aged population increases, stock prices tend to also increase.
+A population correlation coefficient of **0.83** tells us that there is, in fact, a fairly strong positive linear relationship between the middle-aged population seems to correlate with stock prices. When the middle-aged population increases, stock prices tend to also increase.
