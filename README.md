@@ -91,7 +91,7 @@ The higher the population of middle-aged people, the higher the demand for stock
 The results of each of the three transformation were written to separate CSV files.
 
 ## Data Analysis
-Using matplotlib, each of the three statistics were plotted alongside the historical inflation-adjusted S&P 500 close prices. Some interesting observations can be made by comparing the charts.
+Using **matplotlib**, each of the three statistics were plotted alongside the historical inflation-adjusted S&P 500 close prices. Some interesting observations can be made by comparing the charts.
 
 Around the 1970s, both stock prices and median age start an upward trend that ultimately never stops. Much of this is due to the shift of the U.S. economy away from World War II to domestic growth, as well as the end of the Baby Boom in 1964. An increasing median age seems to correlate with increasing stock prices.
 
