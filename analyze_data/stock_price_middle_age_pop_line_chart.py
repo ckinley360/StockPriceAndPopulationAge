@@ -22,7 +22,7 @@ def read_and_join_data(stockPriceCsv, middleAgeCsv):
     
     Returns:
     -----------
-    * df: pandas.DataFrame
+    * joinedData: pandas.DataFrame
         The joined data.
 
     """
@@ -77,7 +77,8 @@ def plot_data(data):
     ax[1].set_xlabel('Year')
     ax[1].set_ylabel('Middle Age Population (millions)')
     ax[1].set_title('Middle Age Population by Year')
-    ax[1].yaxis.set_major_formatter(mpl.ticker.FuncFormatter(millions_formatter))
+    ax[1].yaxis.set_major_formatter(
+        mpl.ticker.FuncFormatter(millions_formatter))
 
     # Highlight local maxima and minima.
     ax[0].axvspan(1962, 1968, color='black', alpha=0.1)
