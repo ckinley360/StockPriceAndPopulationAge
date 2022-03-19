@@ -1,5 +1,5 @@
 # Stock Price And Population Age
-A high-level analysis of the relationship between U.S. stock prices and U.S. age demographics.
+An analysis of the relationship between U.S. stock prices and U.S. age demographics.
 
 ## Table of Contents
 * [General Information](#general-information)
