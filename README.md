@@ -98,12 +98,15 @@ Around the 1970s, both stock prices and median age start an upward trend that ul
 <img src="analyze_data/stock_price_median_age_line_chart.jpg" width="650" height="400">
 
 Drilling down a little deeper, we compare the ratio of middle aged (40-49) population to old aged (60-69) population. Both series have a local maximum in the mid 1960's, local minimum in the early 1980's, and local maximum around the turn of the century. Before the 1960's and after the turn of the century, the series go off in opposite directions, most dramatically after 2010. This opposite behavior is puzzling. Perhaps some of the many other stock price factors are at play here.
+
 <img src="analyze_data/stock_price_mo_ratio_line_chart.jpg" width="650" height="400">
 
 To try to understand the opposite behavior before the 1960's and after the year 2000, let's remove the old-aged population from the picture and look solely at the middle-aged population. The local maxima and local minimum from the previous chart comparison are still present in this one, but the opposite behavior is now mostly gone. After 2010, the middle-aged population does decrease, but not as dramatically as the M/O ratio did. There seems to be a better correlation between stock price and middle aged population. Perhaps the upward pressure of the middle-aged population is a stronger factor for stock prices than the downward pressure of the old-aged population.
+
 <img src="analyze_data/stock_price_middle_age_pop_line_chart.jpg" width="650" height="400">
 
 Now that we've identified that the middle-aged population seems to correlate with stock prices, let's measure the linear relationship between these variables using Pearson's population correlation coefficient (since we have the entire population of each variable, we do not need a hypothesis test). We'll start by plotting the data on a scatter plot.
+
 <img src="analyze_data/stock_price_middle_age_pop_scatter_plot.jpg" width="650" height="400">
 
 Then, we'll compute Pearson's population correlation coefficient using SciPy's **stats** module.
