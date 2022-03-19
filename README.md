@@ -102,8 +102,12 @@ Drilling down a little deeper, we compare the ratio of middle aged (40-49) popul
 To try to understand the opposite behavior before the 1960's and after the year 2000, let's remove the old-aged population from the picture and look solely at the middle-aged population. The local maxima and local minimum from the previous chart comparison are still present in this one, but the opposite behavior is now mostly gone. After 2010, the middle-aged population does decrease, but not as dramatically as the M/O ratio did. There seems to be a better correlation between stock price and middle aged population. Perhaps the upward pressure of the middle-aged population is a stronger factor for stock prices than the downward pressure of the old-aged population.
 <img src="analyze_data/stock_price_middle_age_pop_line_chart.jpg" width="650" height="400">
 
-At this point, I've observed that there are some interesting high-level correlations between stock price and population age, specifically middle-aged population. Let's measure the correlation more precisely using Pearson's population (since we have the entire population of each variable) correlation coefficient. I'll start by plotting the data on a scatter plot, which shows a fairly strong positive correlation.
+Now that we've identified that the middle-aged population seems to correlate with stock prices, let's measure the linear relationship between these variables using Pearson's population correlation coefficient (since we have the entire population of each variable, we do not need a hypothesis test). We'll start by plotting the data on a scatter plot.
 
 <img src="analyze_data/stock_price_middle_age_pop_scatter_plot.jpg" width="650" height="400">
 
-Pearson's population correlation coefficient: `0.83`
+Then, we'll compute Pearson's population correlation coefficient using SciPy's **stats** module.
+
+`Pearson's population correlation coefficient: 0.83`
+
+A population correlation coefficient of **0.83** tells us that there is, in fact, a fairly strong positive relationship between the middle-aged population seems to correlate with stock prices. When the middle-aged population increases, stock prices tend to also increase.
