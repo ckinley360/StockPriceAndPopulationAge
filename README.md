@@ -104,4 +104,6 @@ To try to understand the opposite behavior before the 1960's and after the year 
 
 At this point, I've observed that there are some interesting high-level correlations between stock price and population age, specifically middle-aged population.
 
-<img src="analyze_data/stock_price_middle_age_pop_scatter_plot.jpg width="650" height="400">
+<img src="analyze_data/stock_price_middle_age_pop_scatter_plot.jpg" width="650" height="400">
+
+Pearson's population correlation coefficient: `0.83`
