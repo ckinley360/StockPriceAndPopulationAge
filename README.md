@@ -103,11 +103,10 @@ To try to understand the opposite behavior before the 1960's and after the year 
 <img src="analyze_data/stock_price_middle_age_pop_line_chart.jpg" width="650" height="400">
 
 Now that we've identified that the middle-aged population seems to correlate with stock prices, let's measure the linear relationship between these variables using Pearson's population correlation coefficient (since we have the entire population of each variable, we do not need a hypothesis test). We'll start by plotting the data on a scatter plot.
-
 <img src="analyze_data/stock_price_middle_age_pop_scatter_plot.jpg" width="650" height="400">
 
 Then, we'll compute Pearson's population correlation coefficient using SciPy's **stats** module.
 
 `Pearson's population correlation coefficient: 0.83`
 
-A population correlation coefficient of 0.83 tells us that there is, in fact, a fairly strong positive linear relationship between the middle-aged population seems to correlate with stock prices. When the middle-aged population increases, stock prices tend to also increase.
+A population correlation coefficient of **0.83** tells us that there is, in fact, a fairly strong positive linear relationship between the middle-aged population seems to correlate with stock prices. When the middle-aged population increases, stock prices tend to also increase.
