@@ -22,6 +22,23 @@ The [U.S. Census Bureau](https://www.census.gov/data.html) has a treasure trove 
 ## Setup
 Project dependencies are listed in the **/requirements.txt** file.
 
+To run this project:
+1. Clone this repository.
+2. Ingest the data:
+   - Obtain an API key from the U.S. Census Bureau by requesting one [here](https://api.census.gov/data/key_signup.html).
+   - Open the **ingest_pop_age_1990_to_1999.py** script, enter your API key in the "parameters" variable, and save the file.
+   - Open the **ingest_pop_age.py** script, set the value of the "pathToNormalizedDataDirectory" variable to the fully-qualified path of your "normalized_data_files" directory from the repository you just cloned, and save the file.
+   - Run the **ingest_pop_age.py** script.
+   - Run the **ingest_stock_prices.py** script.
+3. Transform the data:
+   - Run the **compute_median_age_by_year.py** script.
+   - Run the **compute_middle_to_old_ratio.py** script.
+   - Run the **compute_middle_age_pop_by_year.py** script.
+4. Analyze the data:
+   - Run the **stock_price_median_age_line_chart.py** script.
+   - Run the **stock_price_mo_ratio_line_chart.py** script.
+   - Run the **stock_price_middle_age_pop_line_chart.py** script.
+
 ## Data Ingestion
 ### Population Age Data
 #### Disclaimer
@@ -54,10 +71,7 @@ Since each unique data source is structured differently, I normalized the popula
 | ...        | ...       | ...              |
 | 2020       | 85        |  6,739,054       |
 
-Due to some data sources lumping all ages greater than 84 into one bucket - 85+ - the age 85 in my schema represents 85+. The normalized data from each source was written to a separate CSV file, then all of the CSV files were combined into one CSV file.
-
-#### Driver Module
-The driver module for ingesting the population age data is **ingest_pop_age.py**.
+Due to some data sources lumping all ages greater than 84 into one bucket of 85+, the age 85 in my schema represents 85+. The normalized data from each source was written to a separate CSV file, then all of the CSV files were combined into one CSV file.
 
 ### Stock Price Data
 The historical inflation-adjusted S&P 500 close prices were scraped from the table on [multpl](https://www.multpl.com/inflation-adjusted-s-p-500/table/by-year). The data was filtered to the years 1950-2020, the year portion of the date was extracted, and the resulting data was written to a CSV file.
@@ -88,4 +102,4 @@ Drilling down a little deeper, we compare the ratio of middle aged (40-49) popul
 To try to understand the opposite behavior before the 1960's and after the year 2000, I removed the old-aged population from the picture and looked only at the middle-aged population. The local maxima and local minimum from the previous chart comparison are still present in this one, but the opposite behavior is now mostly gone. After 2010, the middle-aged population does decrease, but not as dramatically as the M/O ratio did. There seems to be a better correlation between stock price and middle aged population.
 <img src="analyze_data/stock_price_middle_age_pop_line_chart.jpg" width="650" height="400">
 
-At this point, I've observed that there are some interesting high-level correlations between stock price and population age, specifically middle-aged population. I believe this warrants further and deeper analysis, and this is where I would hand it off to the Data Scientists, Statisticians, or Economists for their expertise.
+At this point, I've observed that there are some interesting high-level correlations between stock price and population age, specifically middle-aged population. I believe this warrants further and deeper analysis by someone trained in statistical techniques.
