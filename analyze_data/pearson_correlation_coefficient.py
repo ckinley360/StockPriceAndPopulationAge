@@ -116,7 +116,7 @@ def compute_pearson_correlation_coefficient(variableOne, variableTwo):
     """
     
     p, _ = pearsonr(variableOne, variableTwo)
-    p = round(p, 2)
+    p = round(p, 3)
 
     return p
 
