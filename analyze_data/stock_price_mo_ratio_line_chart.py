@@ -23,7 +23,7 @@ def read_and_join_data(stockPriceCsv, moRatioCsv):
     
     Returns:
     -----------
-    * df: pandas.DataFrame
+    * joinedData: pandas.DataFrame
         The joined data.
 
     """

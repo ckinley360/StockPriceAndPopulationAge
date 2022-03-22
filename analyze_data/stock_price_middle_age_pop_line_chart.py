@@ -39,8 +39,30 @@ def read_and_join_data(stockPriceCsv, middleAgeCsv):
 
     return joinedData
 
+
 def millions_formatter(x, pos):
-    return f'{int(x / 1000000)}'
+    """
+    Format the input number as millions (rather than raw value).
+    
+    Parameters:
+    -----------
+    * x: int
+        The tick value (number) to format.
+
+    * pos: int
+        The position (not used, but still required in function
+        definition).
+
+    Returns:
+    -----------
+    * formattedTickLabel: string
+        The formatted tick label.
+
+    """
+
+    formattedTickLabel = str(int(x / 1000000))
+
+    return formattedTickLabel
 
 def plot_data(data):
     """

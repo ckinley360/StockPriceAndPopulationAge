@@ -22,7 +22,7 @@ def read_and_join_data(stockPriceCsv, medianAgeCsv):
     
     Returns:
     -----------
-    * df: pandas.DataFrame
+    * joinedData: pandas.DataFrame
         The joined data.
 
     """

@@ -23,7 +23,7 @@ def read_and_join_data(stockPriceCsv, middleAgeCsv):
     
     Returns:
     -----------
-    * df: pandas.DataFrame
+    * joinedData: pandas.DataFrame
         The joined data.
 
     """
@@ -33,15 +33,36 @@ def read_and_join_data(stockPriceCsv, middleAgeCsv):
     middleAgeData = pd.read_csv(middleAgeCsv)
 
     # Join the data on Year.
-    preparedData = pd.merge(left=stockPriceData,
-                            right=middleAgeData,
-                            how='inner',
-                            on='Year')
+    joinedData = pd.merge(left=stockPriceData,
+                          right=middleAgeData,
+                          how='inner',
+                          on='Year')
 
-    return preparedData
+    return joinedData
 
 def millions_formatter(x, pos):
-    return f'{int(x / 1000000)}'
+    """
+    Format the input number as millions (rather than raw value).
+    
+    Parameters:
+    -----------
+    * x: int
+        The tick value (number) to format.
+
+    * pos: int
+        The position (not used, but still required in function
+        definition).
+
+    Returns:
+    -----------
+    * formattedTickLabel: string
+        The formatted tick label.
+
+    """
+
+    formattedTickLabel = str(int(x / 1000000))
+
+    return formattedTickLabel
 
 def plot_data(data):
     """
@@ -73,8 +94,28 @@ def plot_data(data):
         format='jpeg',
         dpi=100)
 
-def compute_pearson_correlation_coefficient(data):
-    p, _ = pearsonr(data['Population'], data['Close Price'])
+def compute_pearson_correlation_coefficient(variableOne, variableTwo):
+    """
+    Compute Pearson's population correlation coefficient.
+    
+    Parameters:
+    -----------
+    * variableOne: array_like
+        The first variable (either independent or dependent).
+
+    * variableTwo: array_like
+        The second variable (either independent or dependent, opposite
+        of variableOne).
+
+    Returns:
+    -----------
+    * p: float
+        Pearson's population correlation coefficient, rounded to two
+        decimal places.
+
+    """
+    
+    p, _ = pearsonr(variableOne, variableTwo)
     p = round(p, 2)
 
     return p
@@ -82,7 +123,8 @@ def compute_pearson_correlation_coefficient(data):
 def main():
     df = read_and_join_data(stockPriceCsv, middleAgeCsv)
     plot_data(df)
-    p = compute_pearson_correlation_coefficient(df)
+    p = compute_pearson_correlation_coefficient(
+        df['Population'], df['Close Price'])
     print('Pearson\'s population correlation coefficient: ' + str(p))
 
 if __name__ == '__main__':
