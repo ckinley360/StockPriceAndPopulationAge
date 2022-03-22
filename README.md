@@ -38,6 +38,7 @@ To run this project:
    - Run the **stock_price_median_age_line_chart.py** script.
    - Run the **stock_price_mo_ratio_line_chart.py** script.
    - Run the **stock_price_middle_age_pop_line_chart.py** script.
+   - Run the **pearson_correlation_coefficient.py** script.
 
 ## Data Ingestion
 ### Population Age Data
