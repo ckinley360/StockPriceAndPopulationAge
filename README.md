@@ -114,7 +114,7 @@ Then, we'll compute Pearson's population correlation coefficient using SciPy's *
 
 `Pearson's population correlation coefficient (p): 0.83`
 
-A population correlation coefficient of **0.83** tells us that there is, in fact, a fairly strong positive linear relationship between the middle-aged population and stock prices. When the middle-aged population increases, stock prices tend to also increase. With the population correlation coefficient computed, we can compute the population coefficient of determination:
+A population correlation coefficient of **0.83** tells us that there is, in fact, a fairly strong positive linear relationship between the middle-aged population and stock prices. When the middle-aged population increases, stock prices tend to also increase. With the population correlation coefficient computed, we can then compute the population coefficient of determination:
 
 `Population coefficient of determination (p^2): p^2 = (0.83)^2 = 0.689`
 
