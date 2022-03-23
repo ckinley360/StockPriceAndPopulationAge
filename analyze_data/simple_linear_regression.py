@@ -95,8 +95,8 @@ def plot_regression_line(x, y, linearRegressionResult):
              linearRegressionResult.intercept,
              'r',
              label='Fitted Line (y = ' + 
-             str(linearRegressionResult.slope) + 'x + ' + 
-             str(linearRegressionResult.intercept) + ')')
+             f'{linearRegressionResult.slope:.7f}' + 'x - ' + 
+             str(round(linearRegressionResult.intercept * -1, 3)) + ')')
     plt.legend()
 
     fig = plt.gcf()
@@ -111,7 +111,43 @@ def plot_regression_line(x, y, linearRegressionResult):
     ax.xaxis.set_major_formatter(
         mpl.ticker.FuncFormatter(millions_formatter))
 
-    plt.show()
+    # Save the chart as a file.
+    fig.savefig(
+        'analyze_data/simple_linear_regression.jpg',
+        format='jpeg',
+        dpi=100)
+    
+    # Close the figure.
+    plt.close()
+
+def create_residual_plot(x, yActual, regressionSlope, regressionYIntercept):
+    # Create a dataframe composed of x, yActual, yPredicted, and residual.
+    data = pd.concat([x, yActual], axis=1)
+    data['Predicted Close Price'] = data['Population'] * regressionSlope + regressionYIntercept
+    data['Residual'] = data['Close Price'] - data['Predicted Close Price']
+
+    # Create figure and axis objects.
+    fig, ax = plt.subplots()
+    ax.scatter(data['Population'], data['Residual'])
+    fig.set_size_inches((11, 6))
+
+    ax.set_title(
+        'Middle Age Population Residual Plot')
+    ax.set_ylabel('Residuals')
+    ax.yaxis.set_major_formatter('{x:,.0f}')
+    ax.set_xlabel('Middle Age Population (millions)')
+    ax.xaxis.set_major_formatter(
+        mpl.ticker.FuncFormatter(millions_formatter))
+
+    ax.axhline(y=0, color='k')
+
+    # Save the chart as a file.
+    fig.savefig(
+        'analyze_data/middle_age_pop_residual_plot.jpg',
+        format='jpeg',
+        dpi=100)
+
+    print(data)
 
 def main():
     df = read_and_join_data(stockPriceCsv, middleAgeCsv)
@@ -121,7 +157,11 @@ def main():
     plot_regression_line(df['Population'],
                          df['Close Price'],
                          linearRegressionResult)
-
+    create_residual_plot(
+        df['Population'],
+        df['Close Price'],
+        linearRegressionResult.slope,
+        linearRegressionResult.intercept)
 
 if __name__ == '__main__':
     main()
